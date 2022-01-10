@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TAILLE 100
 int main()
@@ -26,6 +27,14 @@ int main()
 
             printf("indiquez le nom :");
             scanf("%s",nom);
+
+            //adapte la taille d'allocation mémoire
+            nom = realloc(nom,(strlen(nom)+1)*sizeof(char));
+            if(nom == NULL)
+            {
+                free(liste_nom);
+                return -3;
+            }
 
             *(liste_nom+i)=nom;
     }
